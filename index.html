@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="XYZ — contemporary clothing designed for everyday expression."
+    />
+    <title>XYZ — Wear your own way</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="home">
+      <header class="site-header">
+        <div class="brand-area">
+          <button class="menu-icon" type="button" aria-label="Menu">
+            <span></span>
+            <span></span>
+          </button>
+          <a class="wordmark" href="index.html" aria-label="XYZ home">XYZ</a>
+        </div>
+
+        <nav class="primary-nav" aria-label="Main navigation">
+          <a href="index.html" aria-current="page">Home</a>
+          <a href="collection.html">Collection</a>
+          <a href="cart.html">Cart</a>
+          <a href="account.html">Account</a>
+        </nav>
+
+        <label class="search" aria-label="Search">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="10.8" cy="10.8" r="6.3"></circle>
+            <path d="m15.4 15.4 4.1 4.1"></path>
+          </svg>
+          <input type="search" placeholder="Search" />
+          <span class="search-shortcut">⌘ K</span>
+        </label>
+      </header>
+
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-content">
+          <p class="eyebrow">Autumn / winter 2026</p>
+          <h1 id="hero-title">Sculpted<br />elegance for the<br />modern muse.</h1>
+          <p class="hero-description">
+            A considered wardrobe for a life in motion.<br class="desktop-break" />
+            Discover the new expression of everyday dressing.
+          </p>
+          <div class="hero-actions">
+            <a class="shop-link shop-link-primary" href="collection.html">
+              Explore collection
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a class="shop-link shop-link-secondary" href="collection.html">
+              View lookbook
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-caption">
+          <span>Paris</span>
+          <span>Limited collection</span>
+          <span>Editorial 01</span>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
