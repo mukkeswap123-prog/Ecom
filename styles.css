@@ -489,6 +489,40 @@ input {
   transform: scale(1.035);
 }
 
+.ad-section {
+  padding: 48px clamp(16px, 2vw, 32px);
+  background: #fff;
+}
+
+.ad-banner {
+  display: flex;
+  min-height: clamp(400px, 42vw, 680px);
+  align-items: center;
+  justify-content: flex-start;
+  padding: 48px clamp(24px, 5vw, 88px);
+  overflow: hidden;
+  background-color: #efefed;
+  background-image: url("bestsellers-ad-background.jpg");
+  background-position: center 38%;
+  background-size: cover;
+}
+
+.ad-banner h2 {
+  width: min(62%, 820px);
+  margin: 0 0 0 2%;
+  color: #080808;
+  font-size: clamp(3rem, 6.5vw, 6.6rem);
+  font-weight: 400;
+  letter-spacing: -0.075em;
+  line-height: 0.88;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.ad-banner h2 span {
+  display: block;
+}
+
 .policies {
   padding: 96px clamp(24px, 4.2vw, 84px);
   background: #fff;
@@ -722,6 +756,20 @@ input {
     font-size: 0.9rem;
   }
 
+  .ad-section {
+    padding: 40px 20px;
+  }
+
+  .ad-banner {
+    min-height: 470px;
+    background-position: 62% center;
+  }
+
+  .ad-banner h2 {
+    width: 65%;
+    font-size: clamp(2.8rem, 7.5vw, 4.5rem);
+  }
+
   .footer-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 40px 24px;
@@ -891,6 +939,23 @@ input {
 
   .policy-card h2 {
     font-size: 1.25rem;
+  }
+
+  .ad-section {
+    padding: 28px 16px;
+  }
+
+  .ad-banner {
+    min-height: 440px;
+    align-items: flex-start;
+    padding: 40px 18px;
+    background-position: 62% center;
+  }
+
+  .ad-banner h2 {
+    width: 75%;
+    margin-left: 0;
+    font-size: clamp(2.5rem, 10.5vw, 3.8rem);
   }
 
   .site-footer {
