@@ -499,17 +499,19 @@ input {
   min-height: clamp(400px, 42vw, 680px);
   align-items: center;
   justify-content: flex-start;
-  padding: 48px clamp(24px, 5vw, 88px);
+  padding: 48px clamp(24px, 5vw, 88px) 48px clamp(280px, 20vw, 380px);
   overflow: hidden;
   background-color: #efefed;
   background-image: url("bestsellers-ad-background.jpg");
-  background-position: center 38%;
-  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: auto 100%;
 }
 
 .ad-banner h2 {
-  width: min(62%, 820px);
-  margin: 0 0 0 2%;
+  width: min(56%, 820px);
+  margin: 0;
+  transform: translateX(calc(-1 * clamp(48px, 18vw, 258px)));
   color: #080808;
   font-size: clamp(3rem, 6.5vw, 6.6rem);
   font-weight: 400;
@@ -762,11 +764,14 @@ input {
 
   .ad-banner {
     min-height: 470px;
-    background-position: 62% center;
+    padding-left: clamp(180px, 24vw, 260px);
+    background-position: right center;
+    background-size: auto 100%;
   }
 
   .ad-banner h2 {
-    width: 65%;
+    width: 68%;
+    transform: translateX(-clamp(36px, 18vw, 144px));
     font-size: clamp(2.8rem, 7.5vw, 4.5rem);
   }
 
@@ -949,12 +954,14 @@ input {
     min-height: 440px;
     align-items: flex-start;
     padding: 40px 18px;
-    background-position: 62% center;
+    background-position: right center;
+    background-size: auto 100%;
   }
 
   .ad-banner h2 {
-    width: 75%;
+    width: 68%;
     margin-left: 0;
+    transform: translateX(-18px);
     font-size: clamp(2.5rem, 10.5vw, 3.8rem);
   }
 
