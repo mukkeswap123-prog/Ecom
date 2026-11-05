@@ -48,7 +48,7 @@ input {
   align-items: center;
   min-height: 110px;
   padding: 0 var(--page-gutter);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  /*border-bottom: 1px solid rgba(255, 255, 255, 0.35);*/
   background: #0c0b09;
 }
 
