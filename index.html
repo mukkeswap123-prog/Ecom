@@ -142,6 +142,77 @@
           </article>
         </div>
       </section>
+
+      <section class="best-sellers" aria-labelledby="best-sellers-title">
+        <div class="best-sellers-heading">
+          <h2 id="best-sellers-title">Best Sellers</h2>
+          <div class="best-sellers-filters" role="group" aria-label="Filter best sellers">
+            <button class="seller-filter is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+            <button class="seller-filter" type="button" data-filter="men" aria-pressed="false">Men</button>
+            <button class="seller-filter" type="button" data-filter="women" aria-pressed="false">Women</button>
+            <button class="seller-filter" type="button" data-filter="new" aria-pressed="false">New arrivals</button>
+          </div>
+        </div>
+
+        <div class="best-sellers-grid">
+          <article class="seller-card" data-category="men" data-new-arrival="true">
+            <div class="seller-image">
+              <img
+                src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&amp;fit=crop&amp;w=1200&amp;q=85"
+                alt="Model wearing a classic white T-shirt"
+                loading="lazy"
+                decoding="async"
+              />
+              <button class="shop-link shop-link-primary quick-add" type="button">Add to cart</button>
+            </div>
+            <div class="product-details">
+              <h3>Men's Essential T-Shirt</h3>
+              <p>$35.00</p>
+            </div>
+          </article>
+
+          <article class="seller-card" data-category="women" data-new-arrival="false">
+            <div class="seller-image">
+              <img
+                src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&amp;fit=crop&amp;w=1200&amp;q=85"
+                alt="Model wearing a bright yellow matching set"
+                loading="lazy"
+                decoding="async"
+              />
+              <button class="shop-link shop-link-primary quick-add" type="button">Add to cart</button>
+            </div>
+            <div class="product-details">
+              <h3>Women's Tailored Set</h3>
+              <p>$86.00</p>
+            </div>
+          </article>
+        </div>
+      </section>
     </main>
+    <script>
+      const bestSellers = document.querySelector(".best-sellers");
+      const sellerFilters = bestSellers.querySelectorAll(".seller-filter");
+      const sellerCards = bestSellers.querySelectorAll(".seller-card");
+
+      sellerFilters.forEach((filterButton) => {
+        filterButton.addEventListener("click", () => {
+          const filter = filterButton.dataset.filter;
+
+          sellerFilters.forEach((button) => {
+            const isActive = button === filterButton;
+            button.classList.toggle("is-active", isActive);
+            button.setAttribute("aria-pressed", String(isActive));
+          });
+
+          sellerCards.forEach((card) => {
+            card.hidden =
+              filter !== "all" &&
+              (filter === "new"
+                ? card.dataset.newArrival !== "true"
+                : card.dataset.category !== filter);
+          });
+        });
+      });
+    </script>
   </body>
 </html>

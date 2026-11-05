@@ -402,6 +402,93 @@ input {
   text-decoration: line-through;
 }
 
+.best-sellers {
+  padding: 48px clamp(16px, 2vw, 32px) 72px;
+  background: #f7f5f2;
+  color: #242321;
+}
+
+.best-sellers-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 38px;
+}
+
+.best-sellers-heading h2 {
+  margin: 0;
+  font-size: clamp(2rem, 3vw, 2.65rem);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 1.1;
+}
+
+.best-sellers-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.seller-filter {
+  min-height: 33px;
+  padding: 0 16px;
+  border: 1px solid #242321;
+  border-radius: 999px;
+  background: transparent;
+  color: #242321;
+  font-size: 0.76rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.seller-filter.is-active,
+.seller-filter:hover {
+  background: #242321;
+  color: #f7f5f2;
+}
+
+.seller-filter:focus-visible {
+  outline: 2px solid #242321;
+  outline-offset: 3px;
+}
+
+.best-sellers-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.seller-card {
+  min-width: 0;
+}
+
+.seller-card[hidden] {
+  display: none;
+}
+
+.seller-image {
+  position: relative;
+  aspect-ratio: 1.08;
+  overflow: hidden;
+  background: #e8e4e0;
+}
+
+.seller-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 350ms ease;
+}
+
+.seller-card:hover .seller-image img {
+  transform: scale(1.035);
+}
+
 @media (max-width: 960px) {
   :root {
     --page-gutter: 48px;
@@ -438,6 +525,10 @@ input {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 16px;
     row-gap: 28px;
+  }
+
+  .best-sellers {
+    padding-top: 40px;
   }
 }
 
@@ -550,6 +641,37 @@ input {
 
   .quick-add {
     bottom: 12px;
+  }
+
+  .best-sellers {
+    padding: 32px 16px 48px;
+  }
+
+  .best-sellers-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 24px;
+  }
+
+  .best-sellers-filters {
+    justify-content: flex-start;
+    gap: 7px;
+  }
+
+  .seller-filter {
+    min-height: 31px;
+    padding: 0 12px;
+    font-size: 0.68rem;
+  }
+
+  .best-sellers-grid {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .seller-image {
+    aspect-ratio: 0.92;
   }
 }
 
