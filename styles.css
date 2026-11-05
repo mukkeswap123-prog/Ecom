@@ -334,28 +334,21 @@ input {
   right: 7%;
   bottom: 20px;
   left: 7%;
-  min-height: 46px;
-  padding: 0 18px;
-  border: 1px solid #242321;
-  border-radius: 999px;
-  background: #fff;
-  color: #242321;
-  font-size: 0.8rem;
-  text-transform: uppercase;
   cursor: pointer;
   opacity: 0;
   transform: translateY(8px);
-  transition: opacity 180ms ease, transform 180ms ease, background-color 180ms ease;
+  transition:
+    color 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    opacity 180ms ease,
+    transform 180ms ease;
 }
 
 .product-card:hover .quick-add,
 .quick-add:focus-visible {
   opacity: 1;
   transform: translateY(0);
-}
-
-.quick-add:hover {
-  background: #efede9;
 }
 
 .product-card-sale .product-image {
@@ -556,9 +549,7 @@ input {
   }
 
   .quick-add {
-    min-height: 40px;
     bottom: 12px;
-    font-size: 0.69rem;
   }
 }
 
