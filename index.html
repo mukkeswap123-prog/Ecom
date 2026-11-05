@@ -189,7 +189,7 @@
         </div>
       </section>
 
-      <section class="policies" aria-label="Shopping benefits">
+      <section class="policies" id="policies" aria-label="Shopping benefits">
         <div class="policy-grid">
           <article class="policy-card">
             <svg class="policy-icon" viewBox="0 0 48 48" aria-hidden="true">
@@ -225,6 +225,70 @@
         </div>
       </section>
     </main>
+    <footer class="site-footer" id="footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="footer-wordmark" href="index.html">XYZ</a>
+          <p>
+            Thoughtfully designed clothing for everyday expression. Discover
+            considered pieces for wherever life takes you.
+          </p>
+          <form class="newsletter-form">
+            <label class="visually-hidden" for="newsletter-email">Email address</label>
+            <input
+              id="newsletter-email"
+              type="email"
+              placeholder="Email"
+              autocomplete="email"
+              required
+            />
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+
+        <nav class="footer-column" aria-label="Quick links">
+          <h2>Quick Link</h2>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="collection.html">Shop</a></li>
+            <li><a href="#policies">About</a></li>
+            <li><a href="#trending-title">Blog</a></li>
+            <li><a href="#policies">FAQ</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-column" aria-label="Collections">
+          <h2>Collections</h2>
+          <ul>
+            <li><a href="#best-sellers-title">Women</a></li>
+            <li><a href="#best-sellers-title">Men</a></li>
+            <li><a href="#trending-title">New Arrivals</a></li>
+            <li><a href="#best-sellers-title">Best Sellers</a></li>
+            <li><a href="#trending-title">Sale</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-column" aria-label="Legal and help">
+          <h2>Legal</h2>
+          <ul>
+            <li><a href="#policies">Privacy policy</a></li>
+            <li><a href="#policies">Refund Policy</a></li>
+            <li><a href="#policies">Shipping Policy</a></li>
+            <li><a href="#policies">Contact</a></li>
+            <li><a href="#footer">404</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-column" aria-label="Social media">
+          <h2>Follow Us</h2>
+          <ul>
+            <li><a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram <span aria-hidden="true">↗</span></a></li>
+            <li><a href="https://www.facebook.com/" target="_blank" rel="noreferrer">Facebook <span aria-hidden="true">↗</span></a></li>
+            <li><a href="https://www.x.com/" target="_blank" rel="noreferrer">Twitter <span aria-hidden="true">↗</span></a></li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
     <script>
       const bestSellers = document.querySelector(".best-sellers");
       const sellerFilters = bestSellers.querySelectorAll(".seller-filter");
