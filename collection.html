@@ -3,7 +3,181 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Collection — XYZ</title>
+    <meta
+      name="description"
+      content="Explore the WearCulture collection of considered everyday fashion."
+    />
+    <title>Collection — WearCulture</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="collection.js" defer></script>
   </head>
-  <body></body>
+  <body class="collection-body">
+    <header class="site-header">
+      <div class="brand-area">
+        <button class="menu-icon" type="button" aria-label="Menu">
+          <span></span>
+          <span></span>
+        </button>
+        <a class="wordmark" href="index.html" aria-label="WearCulture home">WearCulture</a>
+      </div>
+
+      <nav class="primary-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="collection.html" aria-current="page">Collection</a>
+        <a href="cart.html">Cart</a>
+        <a href="account.html">Account</a>
+      </nav>
+
+      <label class="search" aria-label="Search">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="10.8" cy="10.8" r="6.3"></circle>
+          <path d="m15.4 15.4 4.1 4.1"></path>
+        </svg>
+        <input type="search" placeholder="Search" />
+      </label>
+    </header>
+
+    <main class="collection-page">
+      <section class="collection-hero" aria-labelledby="collection-title">
+        <div class="collection-hero-copy">
+          <p>Explore our product</p>
+          <h1 id="collection-title">Our Product Collection</h1>
+        </div>
+      </section>
+
+      <section class="collection-content" aria-label="Browse collection">
+        <aside class="collection-sidebar">
+          <div class="collection-filter">
+            <h2>Filter</h2>
+            <p>Product filters will be available here.</p>
+          </div>
+        </aside>
+
+        <div class="collection-results">
+          <div class="collection-toolbar">
+            <div class="collection-tabs" role="group" aria-label="Filter products by category">
+              <button class="collection-tab is-active" type="button" data-category="all" aria-pressed="true">All</button>
+              <button class="collection-tab" type="button" data-category="men" aria-pressed="false">Men</button>
+              <button class="collection-tab" type="button" data-category="women" aria-pressed="false">Women</button>
+            </div>
+
+            <label class="collection-sort">
+              <span>Sort by:</span>
+              <select aria-label="Sort products">
+                <option value="best-selling">Best Selling</option>
+                <option value="price-low-high">Price: Low to High</option>
+                <option value="price-high-low">Price: High to Low</option>
+                <option value="name-a-z">Name: A to Z</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="collection-grid" aria-live="polite">
+            <article class="product-card collection-product" data-category="men" data-price="1499">
+              <div class="product-image">
+                <img
+                  src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&amp;fit=crop&amp;w=900&amp;q=85"
+                  alt="Model wearing a red graphic T-shirt and black jacket"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <button class="shop-link shop-link-primary quick-add" type="button">Add to cart</button>
+              </div>
+              <div class="product-details">
+                <h3>Shirt with Gun Print</h3>
+                <p>₹1,499</p>
+              </div>
+            </article>
+
+            <article class="product-card collection-product" data-category="women" data-price="2999">
+              <div class="product-image">
+                <img
+                  src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&amp;fit=crop&amp;w=900&amp;q=85"
+                  alt="Model wearing a light blue tailored outfit"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <button class="shop-link shop-link-primary quick-add" type="button">Add to cart</button>
+              </div>
+              <div class="product-details">
+                <h3>Cotton Tailored Set</h3>
+                <p>₹2,999</p>
+              </div>
+            </article>
+
+            <article class="product-card collection-product" data-category="men" data-price="3499">
+              <div class="product-image">
+                <img
+                  src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&amp;fit=crop&amp;w=900&amp;q=85"
+                  alt="Model wearing a bright yellow matching set"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <button class="shop-link shop-link-primary quick-add" type="button">Add to cart</button>
+              </div>
+              <div class="product-details">
+                <h3>Beige Coat Pant</h3>
+                <p>₹3,499</p>
+              </div>
+            </article>
+
+            <article class="product-card collection-product product-card-sale" data-category="men" data-price="1000">
+              <div class="product-image">
+                <img
+                  src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&amp;fit=crop&amp;w=900&amp;q=85"
+                  alt="Classic white T-shirt styled for everyday wear"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span class="sale-ribbon">20% off</span>
+                <button class="shop-link shop-link-primary quick-add" type="button">Add to cart</button>
+              </div>
+              <div class="product-details">
+                <h3>Men's T-Shirt</h3>
+                <p><span class="original-price">₹1,250</span> ₹1,000</p>
+              </div>
+            </article>
+
+            <article class="product-card collection-product" data-category="men" data-price="1000">
+              <div class="product-image">
+                <img
+                  src="bestseller-men.jpg"
+                  alt="Man wearing a colorful patterned shirt against a yellow background"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <button class="shop-link shop-link-primary quick-add" type="button">Add to cart</button>
+              </div>
+              <div class="product-details">
+                <h3>Men's Essential T-Shirt</h3>
+                <p>₹1,000</p>
+              </div>
+            </article>
+
+            <article class="product-card collection-product" data-category="women" data-price="2999">
+              <div class="product-image">
+                <img
+                  src="bestseller-women.jpg"
+                  alt="Woman wearing a black outfit seated against a light blue backdrop"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <button class="shop-link shop-link-primary quick-add" type="button">Add to cart</button>
+              </div>
+              <div class="product-details">
+                <h3>Women's Tailored Set</h3>
+                <p>₹2,999</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
