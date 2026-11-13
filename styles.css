@@ -760,7 +760,7 @@ input {
 
 .collection-filter {
   padding: 22px;
-  border: 1px solid #e3e1df;
+  border: 1px solid #000;
   border-radius: 8px;
   background: #fff;
 }
@@ -797,7 +797,7 @@ input {
   min-width: 56px;
   min-height: 42px;
   padding: 0 20px;
-  border: 1px solid #e3e6e9;
+  border: 1px solid #000;
   border-radius: 999px;
   background: #fff;
   color: #242321;
@@ -807,10 +807,15 @@ input {
   transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
 }
 
-.collection-tab.is-active,
-.collection-tab:hover {
+.collection-tab:hover:not(.is-active) {
   border-color: #e7eaee;
   background: #e7eaee;
+}
+
+.collection-tab.is-active {
+  border-color: #000;
+  background: #000;
+  color: #fff;
 }
 
 .collection-tab:focus-visible,
@@ -832,7 +837,7 @@ input {
   min-width: 158px;
   min-height: 42px;
   padding: 0 38px 0 16px;
-  border: 1px solid #e3e6e9;
+  border: 1px solid #000;
   border-radius: 999px;
   appearance: none;
   background-color: #fff;
