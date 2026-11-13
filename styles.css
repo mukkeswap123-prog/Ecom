@@ -705,6 +705,10 @@ input {
   color-scheme: light;
 }
 
+.collection-body .site-header {
+  color: #f7f5f0;
+}
+
 .collection-page {
   min-height: 100vh;
   background: #fff;
@@ -1188,24 +1192,6 @@ input {
     margin: 28px 8px 0;
     padding: 32px 20px;
     background-position: center, 43% center;
-  }
-
-  .collection-body .site-header {
-    grid-template-columns: minmax(0, 1fr) auto;
-  }
-
-  .collection-body .brand-area {
-    min-width: 0;
-    gap: 12px;
-  }
-
-  .collection-body .wordmark {
-    font-size: clamp(1.25rem, 5vw, 1.8rem);
-    white-space: nowrap;
-  }
-
-  .collection-body .search {
-    width: clamp(100px, 32vw, 126px);
   }
 
   .collection-hero-copy p {
