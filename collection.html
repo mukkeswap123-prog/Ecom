@@ -53,9 +53,47 @@
 
       <section class="collection-content" aria-label="Browse collection">
         <aside class="collection-sidebar">
-          <div class="collection-filter">
+          <div class="collection-filter" aria-label="Product filters">
             <h2>Filter</h2>
-            <p>Product filters will be available here.</p>
+
+            <fieldset class="filter-section">
+              <legend>Category</legend>
+              <label class="filter-option"><input type="checkbox" name="product-type" value="t-shirts" /><span>T-Shirts</span></label>
+              <label class="filter-option"><input type="checkbox" name="product-type" value="shirts" /><span>Shirts</span></label>
+              <label class="filter-option"><input type="checkbox" name="product-type" value="jeans" /><span>Jeans</span></label>
+              <label class="filter-option"><input type="checkbox" name="product-type" value="outfit-sets" /><span>Outfit Sets</span></label>
+              <label class="filter-option"><input type="checkbox" name="product-type" value="pajamas" /><span>Pajamas</span></label>
+              <label class="filter-option"><input type="checkbox" name="product-type" value="pant-suits" /><span>Pant Suits</span></label>
+              <label class="filter-option"><input type="checkbox" name="product-type" value="hoodies" /><span>Hoodies</span></label>
+              <label class="filter-option"><input type="checkbox" name="product-type" value="puffer-jackets" /><span>Puffer Jackets</span></label>
+              <label class="filter-option"><input type="checkbox" name="product-type" value="shorts" /><span>Shorts</span></label>
+              <label class="filter-option"><input type="checkbox" name="product-type" value="short-trousers" /><span>Short Trousers</span></label>
+              <label class="filter-option"><input type="checkbox" name="product-type" value="neck-gaiters" /><span>Neck Gaiters</span></label>
+            </fieldset>
+
+            <fieldset class="filter-section">
+              <legend>Collection</legend>
+              <label class="filter-option"><input type="checkbox" name="collection" value="women" /><span>Women</span></label>
+              <label class="filter-option"><input type="checkbox" name="collection" value="men" /><span>Men</span></label>
+              <label class="filter-option"><input type="checkbox" name="collection" value="new-arrivals" /><span>New Arrivals</span></label>
+            </fieldset>
+
+            <fieldset class="filter-section">
+              <legend>Size</legend>
+              <div class="filter-size-options">
+                <label class="filter-option"><input type="checkbox" name="size" value="S" /><span>S</span></label>
+                <label class="filter-option"><input type="checkbox" name="size" value="M" /><span>M</span></label>
+                <label class="filter-option"><input type="checkbox" name="size" value="L" /><span>L</span></label>
+                <label class="filter-option"><input type="checkbox" name="size" value="XL" /><span>XL</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="filter-section filter-price">
+              <legend>Price</legend>
+              <label class="filter-price-label" for="collection-price">Price range <output for="collection-price">₹3,500</output></label>
+              <input id="collection-price" type="range" min="0" max="3500" step="100" value="3500" />
+              <div class="filter-price-limits"><span>₹0</span><span>₹3,500</span></div>
+            </fieldset>
           </div>
         </aside>
 
@@ -79,7 +117,7 @@
           </div>
 
           <div class="collection-grid" aria-live="polite">
-            <article class="product-card collection-product" data-category="men" data-price="1499">
+            <article class="product-card collection-product" data-category="men" data-type="shirts" data-sizes="S,M,L,XL" data-price="1499">
               <div class="product-image">
                 <img
                   src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&amp;fit=crop&amp;w=900&amp;q=85"
@@ -95,7 +133,7 @@
               </div>
             </article>
 
-            <article class="product-card collection-product" data-category="women" data-price="2999">
+            <article class="product-card collection-product" data-category="women" data-type="outfit-sets" data-sizes="S,M,L,XL" data-new-arrival="true" data-price="2999">
               <div class="product-image">
                 <img
                   src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&amp;fit=crop&amp;w=900&amp;q=85"
@@ -111,7 +149,7 @@
               </div>
             </article>
 
-            <article class="product-card collection-product" data-category="men" data-price="3499">
+            <article class="product-card collection-product" data-category="men" data-type="pant-suits" data-sizes="S,M,L,XL" data-price="3499">
               <div class="product-image">
                 <img
                   src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&amp;fit=crop&amp;w=900&amp;q=85"
@@ -127,7 +165,7 @@
               </div>
             </article>
 
-            <article class="product-card collection-product product-card-sale" data-category="men" data-price="1000">
+            <article class="product-card collection-product product-card-sale" data-category="men" data-type="t-shirts" data-sizes="S,M,L,XL" data-new-arrival="true" data-price="1000">
               <div class="product-image">
                 <img
                   src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&amp;fit=crop&amp;w=900&amp;q=85"
@@ -144,7 +182,7 @@
               </div>
             </article>
 
-            <article class="product-card collection-product" data-category="men" data-price="1000">
+            <article class="product-card collection-product" data-category="men" data-type="t-shirts" data-sizes="S,M,L,XL" data-price="1000">
               <div class="product-image">
                 <img
                   src="bestseller-men.jpg"
@@ -160,7 +198,7 @@
               </div>
             </article>
 
-            <article class="product-card collection-product" data-category="women" data-price="2999">
+            <article class="product-card collection-product" data-category="women" data-type="outfit-sets" data-sizes="S,M,L,XL" data-price="2999">
               <div class="product-image">
                 <img
                   src="bestseller-women.jpg"
