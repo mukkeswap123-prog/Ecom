@@ -9,6 +9,23 @@
     return;
   }
 
+  const deliveryDate = new Date();
+  deliveryDate.setDate(deliveryDate.getDate() + 5);
+  const dateIso = [
+    deliveryDate.getFullYear(),
+    String(deliveryDate.getMonth() + 1).padStart(2, "0"),
+    String(deliveryDate.getDate()).padStart(2, "0"),
+  ].join("-");
+  const formattedDeliveryDate = new Intl.DateTimeFormat("en-IN", {
+    day: "numeric",
+    month: "short",
+  }).format(deliveryDate);
+
+  document.querySelectorAll("[data-delivery-date]").forEach((date) => {
+    date.dateTime = dateIso;
+    date.textContent = `Delivery by ${formattedDeliveryDate}`;
+  });
+
   const products = [...grid.querySelectorAll(".collection-product")];
   const originalOrder = new Map(products.map((product, index) => [product, index]));
   const priceOutput = document.querySelector(".filter-price output");
