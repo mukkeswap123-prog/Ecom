@@ -3,8 +3,12 @@
   const cartItemsElement = document.querySelector("#cart-items");
   const emptyState = document.querySelector("#cart-empty");
   const itemCountElement = document.querySelector("#cart-item-count");
-  const subtotalElement = document.querySelector("#cart-subtotal");
+  const productMrpElement = document.querySelector("#cart-product-mrp");
+  const deliveryChargesElement = document.querySelector("#cart-delivery-charges");
+  const couponDiscountElement = document.querySelector("#cart-coupon-discount");
   const totalElement = document.querySelector("#cart-total");
+  const deliveryCharge = 100;
+  const couponDiscount = 0;
   const currency = (amount) => `₹${amount.toLocaleString("en-IN")}`;
   const defaultColors = [
     { name: "Black", cssColor: "#242321" },
@@ -260,15 +264,23 @@
     });
 
     const count = items.reduce((total, item) => total + item.quantity, 0);
-    const subtotal = items.reduce((total, item) => total + item.price * item.quantity, 0);
+    const productMrp = items.reduce((total, item) => total + item.price * item.quantity, 0);
+    const appliedDeliveryCharge = count > 0 ? deliveryCharge : 0;
+    const total = productMrp + appliedDeliveryCharge - couponDiscount;
     if (itemCountElement) {
       itemCountElement.textContent = `${count} ${count === 1 ? "item" : "items"}`;
     }
-    if (subtotalElement) {
-      subtotalElement.textContent = currency(subtotal);
+    if (productMrpElement) {
+      productMrpElement.textContent = currency(productMrp);
+    }
+    if (deliveryChargesElement) {
+      deliveryChargesElement.textContent = currency(appliedDeliveryCharge);
+    }
+    if (couponDiscountElement) {
+      couponDiscountElement.textContent = currency(couponDiscount);
     }
     if (totalElement) {
-      totalElement.textContent = currency(subtotal);
+      totalElement.textContent = currency(total);
     }
   };
 
