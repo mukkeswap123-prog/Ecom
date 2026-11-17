@@ -78,7 +78,7 @@
           <p class="account-card-eyebrow">Your account</p>
           <h2 id="account-form-title">Sign in</h2>
           <p id="account-form-description" class="account-form-description">
-            Enter your details to access your account.
+            Demo sign-in opens an account preview; credentials are not verified or saved.
           </p>
 
           <form class="account-form" data-account-form="sign-in">
@@ -142,6 +142,119 @@
           <p id="account-status" class="account-status" role="status" aria-live="polite"></p>
         </section>
       </div>
+
+      <section class="account-dashboard" aria-labelledby="account-dashboard-title" hidden>
+        <header class="account-dashboard-header">
+          <div>
+            <p class="account-eyebrow">Your WearCulture account</p>
+            <h1 id="account-dashboard-title">Welcome to your account</h1>
+          </div>
+          <button class="account-text-button" type="button" data-account-sign-out>Sign out</button>
+        </header>
+
+        <p class="account-dashboard-notice">
+          Demo preview only. Your sign-in has not been verified, and account data is not connected to a service.
+        </p>
+
+        <div class="account-dashboard-layout">
+          <nav class="account-dashboard-nav" aria-label="Account sections">
+            <button type="button" data-dashboard-section="overview" aria-current="page">Account details</button>
+            <button type="button" data-dashboard-section="orders">Orders</button>
+            <button type="button" data-dashboard-section="addresses">Addresses</button>
+            <button type="button" data-dashboard-section="contact">Contact details</button>
+            <button type="button" data-dashboard-section="help">Help &amp; support</button>
+            <button type="button" data-dashboard-section="settings">Settings</button>
+          </nav>
+
+          <div class="account-dashboard-content">
+            <section class="account-dashboard-panel" data-account-panel="overview" aria-labelledby="account-details-title">
+              <h2 id="account-details-title">Account details</h2>
+              <p class="account-dashboard-copy">Your profile information.</p>
+              <dl class="account-details-list">
+                <div>
+                  <dt>Name</dt>
+                  <dd id="account-name-display">Not provided</dd>
+                </div>
+                <div>
+                  <dt>Email address</dt>
+                  <dd id="account-email-display">Not provided</dd>
+                </div>
+                <div>
+                  <dt>Phone number</dt>
+                  <dd>Not provided</dd>
+                </div>
+              </dl>
+            </section>
+
+            <section class="account-dashboard-panel" data-account-panel="orders" aria-labelledby="account-orders-title" hidden>
+              <h2 id="account-orders-title">Your orders</h2>
+              <p class="account-dashboard-copy">Your recent purchases will appear here.</p>
+              <div class="account-empty-panel">
+                <h3>No orders yet</h3>
+                <p>When you place an order, you can follow its status here.</p>
+                <a href="collection.html">Explore the collection</a>
+              </div>
+            </section>
+
+            <section class="account-dashboard-panel" data-account-panel="addresses" aria-labelledby="account-addresses-title" hidden>
+              <h2 id="account-addresses-title">Saved addresses</h2>
+              <p class="account-dashboard-copy">Addresses you save will be ready for your next order.</p>
+              <div class="account-empty-panel">
+                <h3>No addresses saved</h3>
+                <p>Your delivery addresses will appear here once added.</p>
+              </div>
+            </section>
+
+            <section class="account-dashboard-panel" data-account-panel="contact" aria-labelledby="account-contact-title" hidden>
+              <h2 id="account-contact-title">Contact details</h2>
+              <p class="account-dashboard-copy">The contact information associated with this session.</p>
+              <dl class="account-details-list">
+                <div>
+                  <dt>Email address</dt>
+                  <dd id="account-contact-email">Not provided</dd>
+                </div>
+                <div>
+                  <dt>Phone number</dt>
+                  <dd>Not provided</dd>
+                </div>
+              </dl>
+            </section>
+
+            <section class="account-dashboard-panel" data-account-panel="help" aria-labelledby="account-help-title" hidden>
+              <h2 id="account-help-title">Help &amp; support</h2>
+              <p class="account-dashboard-copy">Quick information for your WearCulture orders.</p>
+              <div class="account-help-list">
+                <article>
+                  <h3>Delivery</h3>
+                  <p>Expected delivery dates are shown with each product in the collection.</p>
+                </article>
+                <article>
+                  <h3>Returns</h3>
+                  <p>Cart items currently display a 7-day return window.</p>
+                </article>
+                <article>
+                  <h3>Need more help?</h3>
+                  <p>Customer support will be available when account services are connected.</p>
+                </article>
+              </div>
+            </section>
+
+            <section class="account-dashboard-panel" data-account-panel="settings" aria-labelledby="account-settings-title" hidden>
+              <h2 id="account-settings-title">Settings</h2>
+              <p class="account-dashboard-copy">Manage your account preferences.</p>
+              <p class="account-settings-note">Settings are a preview and are not saved yet.</p>
+              <label class="account-setting-option">
+                <input type="checkbox" />
+                <span>Send me updates about new arrivals</span>
+              </label>
+              <label class="account-setting-option">
+                <input type="checkbox" />
+                <span>Send me order updates by email</span>
+              </label>
+            </section>
+          </div>
+        </div>
+      </section>
     </main>
   </body>
 </html>
