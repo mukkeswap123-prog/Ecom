@@ -58,31 +58,14 @@ input {
   gap: 28px;
 }
 
-.menu-icon {
-  display: flex;
-  width: 28px;
-  height: 36px;
-  flex-direction: column;
-  justify-content: center;
-  gap: 6px;
-  padding: 0 2px;
-  border: 0;
-  background: transparent;
-  cursor: default;
-}
-
-.menu-icon span {
-  display: block;
-  width: 23px;
-  height: 1px;
-  background: #f7f5f0;
-}
-
 .wordmark {
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: 2rem;
-  font-weight: 600;
-  letter-spacing: -0.07em;
+  display: inline-flex;
+  gap: 0.28em;
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .primary-nav {
@@ -1946,7 +1929,7 @@ input {
   }
 
   .wordmark {
-    font-size: 1.8rem;
+    font-size: 1.35rem;
   }
 
   .primary-nav {
