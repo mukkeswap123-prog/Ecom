@@ -1111,6 +1111,10 @@ input {
   padding: 22px 0;
 }
 
+.cart-item + .cart-item {
+  border-top: 1px solid #e5e1dc;
+}
+
 .cart-item-image {
   position: relative;
   display: block;
