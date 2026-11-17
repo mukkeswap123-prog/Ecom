@@ -3,7 +3,145 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Account — XYZ</title>
+    <meta name="description" content="Sign in or create your WearCulture account." />
+    <title>Account — WearCulture</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="account.js" defer></script>
   </head>
-  <body></body>
+  <body class="account-body">
+    <header class="site-header">
+      <div class="brand-area">
+        <button class="menu-icon" type="button" aria-label="Menu">
+          <span></span>
+          <span></span>
+        </button>
+        <a class="wordmark" href="index.html" aria-label="WearCulture home">WearCulture</a>
+      </div>
+
+      <nav class="primary-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="collection.html">Collection</a>
+        <a href="cart.html">Cart</a>
+        <a href="account.html" aria-current="page">Account</a>
+      </nav>
+
+      <label class="search" aria-label="Search">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="10.8" cy="10.8" r="6.3"></circle>
+          <path d="m15.4 15.4 4.1 4.1"></path>
+        </svg>
+        <input type="search" placeholder="Search" />
+      </label>
+    </header>
+
+    <main class="account-page">
+      <div class="account-layout">
+        <section class="account-intro" aria-labelledby="account-page-title">
+          <p class="account-eyebrow">WearCulture account</p>
+          <h1 id="account-page-title">Your style,<br />all in one place.</h1>
+          <p class="account-intro-copy">
+            Sign in to keep track of the pieces you love and make every order a little easier.
+          </p>
+
+          <ul class="account-benefits">
+            <li>
+              <span aria-hidden="true">01</span>
+              <div>
+                <h2>Order updates</h2>
+                <p>Keep an eye on your purchases from checkout to delivery.</p>
+              </div>
+            </li>
+            <li>
+              <span aria-hidden="true">02</span>
+              <div>
+                <h2>Your details, ready</h2>
+                <p>Save your delivery information for a smoother checkout.</p>
+              </div>
+            </li>
+            <li>
+              <span aria-hidden="true">03</span>
+              <div>
+                <h2>Easy to pick up</h2>
+                <p>Come back to discover new arrivals and everyday favorites.</p>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="account-card" aria-labelledby="account-form-title">
+          <p class="account-card-eyebrow">Your account</p>
+          <h2 id="account-form-title">Sign in</h2>
+          <p id="account-form-description" class="account-form-description">
+            Enter your details to access your account.
+          </p>
+
+          <form class="account-form" data-account-form="sign-in">
+            <label for="signin-email">Email address</label>
+            <input id="signin-email" name="email" type="email" autocomplete="email" required />
+            <label for="signin-password">Password</label>
+            <input
+              id="signin-password"
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              required
+            />
+            <button class="account-submit" type="submit">Sign in</button>
+            <button class="account-text-button" type="button" data-account-mode="reset">
+              Forgot password?
+            </button>
+            <p class="account-mode-switch">
+              New to WearCulture?
+              <button class="account-text-button" type="button" data-account-mode="create">
+                Create an account
+              </button>
+            </p>
+          </form>
+
+          <form class="account-form" data-account-form="create" hidden>
+            <label for="create-name">Full name</label>
+            <input id="create-name" name="name" type="text" autocomplete="name" required />
+            <label for="create-email">Email address</label>
+            <input id="create-email" name="email" type="email" autocomplete="email" required />
+            <label for="create-password">Create a password</label>
+            <input
+              id="create-password"
+              name="password"
+              type="password"
+              autocomplete="new-password"
+              minlength="8"
+              required
+            />
+            <button class="account-submit" type="submit">Create account</button>
+            <p class="account-mode-switch">
+              Already have an account?
+              <button class="account-text-button" type="button" data-account-mode="sign-in">
+                Sign in
+              </button>
+            </p>
+          </form>
+
+          <form class="account-form" data-account-form="reset" hidden>
+            <label for="reset-email">Email address</label>
+            <input id="reset-email" name="email" type="email" autocomplete="email" required />
+            <button class="account-submit" type="submit">Send reset instructions</button>
+            <p class="account-mode-switch">
+              Remembered your password?
+              <button class="account-text-button" type="button" data-account-mode="sign-in">
+                Back to sign in
+              </button>
+            </p>
+          </form>
+
+          <p id="account-status" class="account-status" role="status" aria-live="polite"></p>
+        </section>
+      </div>
+    </main>
+  </body>
 </html>
