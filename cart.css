@@ -405,20 +405,6 @@
   outline-offset: 3px;
 }
 
-.cart-count {
-  display: inline-flex;
-  min-width: 18px;
-  height: 18px;
-  align-items: center;
-  justify-content: center;
-  margin-left: 5px;
-  border-radius: 50%;
-  background: #f7f5f0;
-  color: #242321;
-  font-size: 0.66rem;
-  line-height: 1;
-}
-
 @media (max-width: 960px) {
   .cart-layout {
     grid-template-columns: 1fr;
