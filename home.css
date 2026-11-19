@@ -47,7 +47,7 @@
 
 .hero-description {
   margin: 25px 0 31px;
-  color: rgba(248, 246, 239, 0.78);
+  color: rgba(252, 252, 252, 0.78);
   font-size: 0.99rem;
   line-height: 1.8;
 }
@@ -87,7 +87,7 @@
   padding: 50px var(--page-gutter) 72px;
   border-top: 1px solid #292825;
   background: #f7f5f2;
-  color: #242321;
+  color: #000000;
 }
 
 .trending-heading {
