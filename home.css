@@ -298,12 +298,7 @@
 }
 
 .footer-wordmark {
-  display: inline-block;
   margin-bottom: 20px;
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: 2.4rem;
-  font-weight: 500;
-  letter-spacing: -0.07em;
 }
 
 .footer-brand > p {
