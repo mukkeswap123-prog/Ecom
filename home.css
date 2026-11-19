@@ -51,6 +51,7 @@
   color: rgba(252, 252, 252, 0.9);
   font-size: 1rem;
   line-height: 1.7;
+  word-spacing: 0.06em;
 }
 
 .hero-actions {
@@ -474,6 +475,7 @@
     max-width: 400px;
     font-size: 0.88rem;
     line-height: 1.75;
+    word-spacing: 0.04em;
   }
 
   .hero-actions {
