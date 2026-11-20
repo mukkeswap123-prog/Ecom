@@ -29,7 +29,81 @@
   const products = [...grid.querySelectorAll(".collection-product")];
   const originalOrder = new Map(products.map((product, index) => [product, index]));
   const priceOutput = document.querySelector(".filter-price output");
+  const productDialog = document.querySelector("#product-detail-dialog");
+  const productDialogImage = productDialog.querySelector(".product-dialog-image");
+  const productDialogTitle = productDialog.querySelector("#product-dialog-title");
+  const productDialogDescription = productDialog.querySelector(".product-dialog-description");
+  const productDialogPrice = productDialog.querySelector(".product-dialog-price");
+  const productDialogRating = productDialog.querySelector(".product-dialog-rating");
+  const productDialogSizes = productDialog.querySelector(".product-dialog-sizes");
+  const productDialogColors = productDialog.querySelector(".product-dialog-colors");
+  const productDialogDelivery = productDialog.querySelector(".product-dialog-delivery");
+  let activeProduct = null;
   let activeCategory = "all";
+
+  grid.addEventListener("click", (event) => {
+    if (!(event.target instanceof Element)) {
+      return;
+    }
+
+    const trigger = event.target.closest("[data-product-details-trigger]");
+    const product = trigger?.closest(".collection-product");
+    if (!product) {
+      return;
+    }
+
+    const image = product.querySelector(".product-image img");
+    const title = product.querySelector("h3");
+    const description = product.querySelector(".product-description");
+    const price = product.querySelector(".product-price");
+    const rating = product.querySelector(".product-rating");
+    const colorList = product.querySelector(".product-color-list");
+    const delivery = product.querySelector(".product-delivery time");
+
+    if (!image || !title || !description || !price || !rating || !colorList || !delivery) {
+      throw new Error("Product details are incomplete.");
+    }
+
+    activeProduct = product;
+    productDialogImage.src = image.src;
+    productDialogImage.alt = image.alt;
+    productDialogTitle.textContent = title.textContent.trim();
+    productDialogDescription.textContent = description.textContent;
+    productDialogPrice.textContent = price.textContent;
+    productDialogRating.replaceChildren(rating.cloneNode(true));
+    productDialogSizes.replaceChildren(
+      ...(product.dataset.sizes || "").split(",").filter(Boolean).map((size) => {
+        const item = document.createElement("li");
+        item.textContent = size;
+        return item;
+      }),
+    );
+    productDialogColors.replaceChildren(
+      ...Array.from(colorList.children, (color) => color.cloneNode(true)),
+    );
+    productDialogDelivery.textContent = delivery.textContent;
+    productDialog.showModal();
+  });
+
+  productDialog.querySelector(".product-dialog-close").addEventListener("click", () => {
+    productDialog.close();
+  });
+
+  productDialog.querySelector(".product-dialog-add").addEventListener("click", () => {
+    const quickAddButton = activeProduct.querySelector(".quick-add");
+    if (!quickAddButton) {
+      throw new Error("The selected product cannot be added to the cart.");
+    }
+
+    quickAddButton.click();
+    productDialog.close();
+  });
+
+  productDialog.addEventListener("click", (event) => {
+    if (event.target === productDialog) {
+      productDialog.close();
+    }
+  });
 
   const updateProducts = () => {
     const sort = sortSelect.value;

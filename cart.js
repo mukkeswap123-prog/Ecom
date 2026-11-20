@@ -14,6 +14,15 @@
     { name: "Black", cssColor: "#242321" },
     { name: "White", cssColor: "#f3f0ec" },
   ];
+  const productDescriptions = new Map([
+    ["shirt-with-gun-print", "Men's Graphic Print T-Shirt"],
+    ["cotton-tailored-set", "Women's Light Blue Cotton Set"],
+    ["beige-coat-pant", "Tailored Coat and Pant Set"],
+    ["men-s-t-shirt", "Men's Classic White Cotton T-Shirt"],
+    ["men-s-essential-t-shirt", "Men's Patterned Graphic T-Shirt"],
+    ["women-s-tailored-set", "Women's Black Tailored Outfit"],
+    ["men-s-beige-coat-pant", "Men's Tailored Coat and Pant Set"],
+  ]);
   const deliveryDate = new Date();
   deliveryDate.setDate(deliveryDate.getDate() + 5);
   const deliveryDateIso = [
@@ -142,6 +151,13 @@
       const name = document.createElement("h3");
       name.textContent = item.name;
 
+      const description = document.createElement("p");
+      description.className = "cart-item-description";
+      description.textContent =
+        typeof item.description === "string" && item.description.trim()
+          ? item.description
+          : productDescriptions.get(item.id) || "";
+
       const rating = document.createElement("div");
       rating.className = "cart-item-rating";
       rating.setAttribute("aria-label", `Rated ${item.rating || "4.8"} out of 5 stars`);
@@ -265,7 +281,11 @@
       shareStatus.setAttribute("role", "status");
       shareStatus.setAttribute("aria-live", "polite");
 
-      details.append(name, rating, price, options, serviceInfo, stockNote, actions, shareStatus);
+      details.append(name);
+      if (description.textContent) {
+        details.append(description);
+      }
+      details.append(price, rating, options, serviceInfo, stockNote, actions, shareStatus);
       row.append(imageLink, details);
       cartItemsElement.append(row);
     });
@@ -295,6 +315,7 @@
     button.addEventListener("click", () => {
       const product = button.closest(".product-card, .seller-card");
       const name = product?.querySelector("h3")?.textContent.trim();
+      const description = product?.querySelector(".product-description")?.textContent.trim();
       const image = product?.querySelector("img")?.getAttribute("src");
       const priceText = product?.querySelector(".product-details p")?.textContent || "";
       const prices = priceText.match(/[\d,]+/g);
@@ -316,6 +337,9 @@
       const existingItem = items.find((item) => item.id === id);
       if (existingItem) {
         existingItem.quantity += 1;
+        if (description) {
+          existingItem.description = description;
+        }
         existingItem.rating = rating;
         existingItem.sizes = sizes;
         existingItem.colors = colors.length ? colors : defaultColors;
@@ -323,6 +347,7 @@
         items.push({
           id,
           name,
+          description,
           image,
           price,
           quantity: 1,

@@ -131,6 +131,7 @@
 }
 
 .cart-item-details h3,
+.cart-item-description,
 .cart-item-price,
 .cart-item-stock {
   margin: 0;
@@ -139,6 +140,12 @@
 .cart-item-details h3 {
   font-size: clamp(1.15rem, 1.7vw, 1.45rem);
   font-weight: 600;
+}
+
+.cart-item-description {
+  color: #56524e;
+  font-size: 0.95rem;
+  line-height: 1.4;
 }
 
 .cart-item-rating {
@@ -444,6 +451,10 @@
 
   .cart-item-details h3 {
     font-size: 0.9rem;
+  }
+
+  .cart-item-description {
+    font-size: 0.82rem;
   }
 
   .cart-item-image {
