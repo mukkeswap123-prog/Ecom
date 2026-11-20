@@ -199,8 +199,8 @@
 }
 
 .cart-item-option-label {
-  color: #56524e;
-  font-size: 0.8rem;
+  color: #242321;
+  font-size: 1rem;
 }
 
 .cart-size-list {
@@ -210,11 +210,6 @@
   margin: 0;
   padding: 0;
   list-style: none;
-}
-
-.cart-item-option:first-child .cart-item-option-label {
-  color: #242321;
-  font-size: 1rem;
 }
 
 .cart-size-button {
@@ -244,19 +239,32 @@
 
 .cart-color-list {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 8px;
-  padding: 4px 0;
+  padding: 0;
 }
 
 .cart-color-swatch {
   display: block;
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
+  padding: 0;
   border: 1px solid rgba(36, 35, 33, 0.22);
   border-radius: 50%;
   background-color: var(--cart-swatch-color);
   box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+}
+
+.cart-color-swatch[aria-pressed="true"] {
+  outline: 2px solid #242321;
+  outline-offset: 2px;
+}
+
+.cart-color-swatch:focus-visible {
+  outline: 2px solid #242321;
+  outline-offset: 3px;
 }
 
 .cart-item-service-info {
