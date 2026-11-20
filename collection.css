@@ -273,16 +273,33 @@
 }
 
 .collection-product .product-rating {
-  display: flex;
+  display: inline-flex;
+  width: fit-content;
+  min-height: 32px;
   align-items: center;
-  gap: 7px;
-  color: #a97924;
-  letter-spacing: 0.08em;
+  justify-content: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border: 0;
+  border-radius: 14px;
+  background: rgba(244, 244, 244, 0.7);
+  font-size: 0.78rem;
+  line-height: 1;
+  text-align: center;
+}
+
+.collection-product .rating-icon {
+  display: block;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  fill: #39834b;
 }
 
 .collection-product .rating-score {
-  color: #56524e;
-  font-size: 0.76rem;
+  color: #3d3d3d;
+  font-size: 0.78rem;
+  font-weight: 700;
   letter-spacing: 0;
 }
 

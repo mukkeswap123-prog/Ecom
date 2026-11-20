@@ -145,13 +145,20 @@
       const rating = document.createElement("div");
       rating.className = "cart-item-rating";
       rating.setAttribute("aria-label", `Rated ${item.rating || "4.8"} out of 5 stars`);
-      const stars = document.createElement("span");
-      stars.setAttribute("aria-hidden", "true");
-      stars.textContent = "★★★★★";
       const ratingScore = document.createElement("span");
       ratingScore.setAttribute("aria-hidden", "true");
-      ratingScore.textContent = `(${item.rating || "4.8"})`;
-      rating.append(stars, ratingScore);
+      ratingScore.textContent = item.rating || "4.8";
+      const ratingStar = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      ratingStar.classList.add("cart-rating-icon");
+      ratingStar.setAttribute("viewBox", "0 0 20 20");
+      ratingStar.setAttribute("aria-hidden", "true");
+      const ratingStarPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      ratingStarPath.setAttribute(
+        "d",
+        "m10 1.8 2.5 5.1 5.7.8-4.1 4 .97 5.7L10 14.7l-5.07 2.67.97-5.7-4.1-4 5.7-.8L10 1.8Z",
+      );
+      ratingStar.append(ratingStarPath);
+      rating.append(ratingScore, ratingStar);
 
       const price = document.createElement("p");
       price.className = "cart-item-price";
