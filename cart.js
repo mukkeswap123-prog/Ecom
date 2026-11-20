@@ -187,12 +187,21 @@
       sizeSection.className = "cart-item-option";
       const sizeLabel = document.createElement("span");
       sizeLabel.className = "cart-item-option-label";
-      sizeLabel.textContent = "Available size";
+      sizeLabel.textContent = "Available Size";
       const sizes = document.createElement("ul");
       sizes.className = "cart-size-list";
+      sizes.setAttribute("aria-label", `Available sizes for ${item.name}`);
       (item.sizes || ["S", "M", "L"]).forEach((size) => {
         const entry = document.createElement("li");
-        entry.textContent = size;
+        const sizeButton = document.createElement("button");
+        sizeButton.type = "button";
+        sizeButton.className = "cart-size-button";
+        sizeButton.dataset.cartAction = "select-size";
+        sizeButton.dataset.productId = item.id;
+        sizeButton.dataset.size = size;
+        sizeButton.setAttribute("aria-pressed", String(item.selectedSize === size));
+        sizeButton.textContent = size;
+        entry.append(sizeButton);
         sizes.append(entry);
       });
       sizeSection.append(sizeLabel, sizes);
@@ -374,6 +383,15 @@
 
     const item = items.find((cartItem) => cartItem.id === button.dataset.productId);
     if (!item) {
+      return;
+    }
+
+    if (button.dataset.cartAction === "select-size") {
+      if (item.sizes?.includes(button.dataset.size)) {
+        item.selectedSize = button.dataset.size;
+        saveCart();
+        renderItems();
+      }
       return;
     }
 
