@@ -33,6 +33,7 @@
   const formattedDeliveryDate = new Intl.DateTimeFormat("en-IN", {
     day: "numeric",
     month: "short",
+    weekday: "long",
   }).format(deliveryDate);
 
   const readCart = () => {
@@ -117,6 +118,17 @@
     caption.textContent = text;
     button.append(icon, caption);
     return button;
+  };
+
+  const makeServiceIcon = (pathData) => {
+    const icon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    icon.setAttribute("viewBox", "0 0 24 24");
+    icon.setAttribute("aria-hidden", "true");
+    icon.classList.add("cart-service-icon");
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("d", pathData);
+    icon.append(path);
+    return icon;
   };
 
   const renderItems = () => {
@@ -210,20 +222,26 @@
       colorSection.className = "cart-item-option";
       const colorLabel = document.createElement("span");
       colorLabel.className = "cart-item-option-label";
-      colorLabel.textContent = "Available color";
+      colorLabel.textContent = "Available Color";
       const colors = document.createElement("div");
       colors.className = "cart-color-list";
+      colors.setAttribute("role", "group");
+      colors.setAttribute("aria-label", `Available colors for ${item.name}`);
       const availableColors =
         Array.isArray(item.colors) &&
         item.colors.every((color) => color.name && color.cssColor)
           ? item.colors
           : defaultColors;
       availableColors.forEach((color) => {
-        const swatch = document.createElement("span");
+        const swatch = document.createElement("button");
+        swatch.type = "button";
         swatch.className = "cart-color-swatch";
+        swatch.dataset.cartAction = "select-color";
+        swatch.dataset.productId = item.id;
+        swatch.dataset.color = color.name;
         swatch.style.setProperty("--cart-swatch-color", color.cssColor);
-        swatch.setAttribute("role", "img");
         swatch.setAttribute("aria-label", color.name);
+        swatch.setAttribute("aria-pressed", String(item.selectedColor === color.name));
         colors.append(swatch);
       });
       colorSection.append(colorLabel, colors);
@@ -232,13 +250,25 @@
       const serviceInfo = document.createElement("div");
       serviceInfo.className = "cart-item-service-info";
       const delivery = document.createElement("p");
-      delivery.textContent = "Delivery by ";
+      const deliveryText = document.createElement("span");
+      deliveryText.append("Delivery by ");
       const deliveryTime = document.createElement("time");
       deliveryTime.dateTime = deliveryDateIso;
       deliveryTime.textContent = formattedDeliveryDate;
-      delivery.append(deliveryTime);
+      deliveryText.append(deliveryTime);
+      delivery.append(
+        makeServiceIcon("M2 7h12v10H2zM14 10h4l4 4v3h-8zM6 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM18 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"),
+        deliveryText,
+      );
       const returns = document.createElement("p");
-      returns.textContent = "7-day return window";
+      const returnText = document.createElement("span");
+      const returnDuration = document.createElement("strong");
+      returnDuration.textContent = "7-day";
+      returnText.append(returnDuration, " return window");
+      returns.append(
+        makeServiceIcon("M9 14 4 9l5-5M4 9h10a6 6 0 1 1 0 12h-2"),
+        returnText,
+      );
       serviceInfo.append(delivery, returns);
 
       const stockNote = document.createElement("p");
@@ -389,6 +419,19 @@
     if (button.dataset.cartAction === "select-size") {
       if (item.sizes?.includes(button.dataset.size)) {
         item.selectedSize = button.dataset.size;
+        saveCart();
+        renderItems();
+      }
+      return;
+    }
+    if (button.dataset.cartAction === "select-color") {
+      const availableColors =
+        Array.isArray(item.colors) &&
+        item.colors.every((color) => color.name && color.cssColor)
+          ? item.colors
+          : defaultColors;
+      if (availableColors.some((color) => color.name === button.dataset.color)) {
+        item.selectedColor = button.dataset.color;
         saveCart();
         renderItems();
       }
