@@ -245,18 +245,25 @@
 
 .collection-product .product-details {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: baseline;
-  gap: 7px 10px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 5px;
 }
 
 .collection-product .product-details h3 {
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.3;
 }
 
-.collection-product .product-details p {
-  font-size: 0.85rem;
+.collection-product .product-description {
+  color: #56524e;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.collection-product .product-price {
+  font-size: 1rem;
+  font-weight: 700;
 }
 
 .collection-product .product-rating,
@@ -406,12 +413,15 @@
   }
 
   .collection-product .product-details h3 {
-    font-size: 0.82rem;
+    font-size: 0.9rem;
   }
 
-  .collection-product .product-details > p:not(.product-rating):not(.product-delivery) {
-    margin-top: 4px;
+  .collection-product .product-description {
     font-size: 0.78rem;
+  }
+
+  .collection-product .product-price {
+    font-size: 0.82rem;
   }
 
   .collection-product .product-rating,
