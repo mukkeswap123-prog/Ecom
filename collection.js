@@ -34,15 +34,90 @@
   const productDialogImage = productDialog.querySelector(".product-dialog-image");
   const productDialogTitle = productDialog.querySelector("#product-dialog-title");
   const productDialogDescription = productDialog.querySelector(".product-dialog-description");
+  const productDialogTabDescription = productDialog.querySelector(".product-dialog-tab-description");
   const productDialogPrice = productDialog.querySelector(".product-dialog-price");
   const productDialogRating = productDialog.querySelector(".product-dialog-rating");
   const productDialogSizes = productDialog.querySelector(".product-dialog-sizes");
   const productDialogColors = productDialog.querySelector(".product-dialog-colors");
   const productDialogThumbnails = productDialog.querySelector(".product-dialog-thumbnails");
   const productDialogDelivery = productDialog.querySelector(".product-dialog-delivery");
+  const productDialogTabList = productDialog.querySelector(".product-dialog-tab-list");
+  const productDialogTabs = [...productDialog.querySelectorAll('[role="tab"]')];
+  const productDialogTabPanels = [...productDialog.querySelectorAll('[role="tabpanel"]')];
+  const reviewList = productDialog.querySelector(".product-dialog-review-list");
+  const reviewSort = productDialog.querySelector(".product-dialog-review-sort");
   const productImagePositions = ["50% 18%", "50% 40%", "50% 62%", "50% 84%"];
   let activeProduct = null;
   let activeCategory = "all";
+
+  const activateProductTab = (selectedTab) => {
+    productDialogTabs.forEach((tab) => {
+      const selected = tab === selectedTab;
+      tab.setAttribute("aria-selected", String(selected));
+      tab.tabIndex = selected ? 0 : -1;
+    });
+
+    productDialogTabPanels.forEach((panel) => {
+      panel.hidden = panel.id !== selectedTab.getAttribute("aria-controls");
+    });
+  };
+
+  productDialogTabList.addEventListener("click", (event) => {
+    if (!(event.target instanceof Element)) {
+      return;
+    }
+
+    const tab = event.target.closest('[role="tab"]');
+    if (tab && productDialogTabs.includes(tab)) {
+      activateProductTab(tab);
+    }
+  });
+
+  productDialogTabList.addEventListener("keydown", (event) => {
+    const currentTab = event.target instanceof Element ? event.target.closest('[role="tab"]') : null;
+    const currentIndex = productDialogTabs.indexOf(currentTab);
+    if (currentIndex < 0) {
+      return;
+    }
+
+    let nextIndex = currentIndex;
+    if (event.key === "ArrowRight") {
+      nextIndex = (currentIndex + 1) % productDialogTabs.length;
+    } else if (event.key === "ArrowLeft") {
+      nextIndex = (currentIndex - 1 + productDialogTabs.length) % productDialogTabs.length;
+    } else if (event.key === "Home") {
+      nextIndex = 0;
+    } else if (event.key === "End") {
+      nextIndex = productDialogTabs.length - 1;
+    } else {
+      return;
+    }
+
+    event.preventDefault();
+    productDialogTabs[nextIndex].focus();
+    activateProductTab(productDialogTabs[nextIndex]);
+  });
+
+  reviewSort.addEventListener("change", () => {
+    const reviews = [...reviewList.querySelectorAll(":scope > .product-dialog-review")];
+    const sorters = {
+      newest: (first, second) => Number(first.dataset.reviewAge) - Number(second.dataset.reviewAge),
+      oldest: (first, second) => Number(second.dataset.reviewAge) - Number(first.dataset.reviewAge),
+      liked: (first, second) => Number(second.dataset.reviewLikes) - Number(first.dataset.reviewLikes),
+    };
+    reviews.sort(sorters[reviewSort.value]);
+    reviewList.replaceChildren(...reviews);
+  });
+
+  productDialog.querySelectorAll(".product-dialog-replies").forEach((replies) => {
+    const summary = replies.querySelector("summary");
+    const replyCount = Number(replies.dataset.replyCount);
+    replies.addEventListener("toggle", () => {
+      summary.textContent = `${replies.open ? "Hide" : "Show"} ${replyCount} ${
+        replyCount === 1 ? "reply" : "replies"
+      }`;
+    });
+  });
 
   productDialogThumbnails.addEventListener("click", (event) => {
     if (!(event.target instanceof Element)) {
@@ -107,6 +182,7 @@
     );
     productDialogTitle.textContent = title.textContent.trim();
     productDialogDescription.textContent = description.textContent;
+    productDialogTabDescription.textContent = description.textContent;
     productDialogPrice.textContent = price.textContent;
     productDialogRating.replaceChildren(rating.cloneNode(true));
     productDialogSizes.replaceChildren(
@@ -120,6 +196,7 @@
       ...Array.from(colorList.children, (color) => color.cloneNode(true)),
     );
     productDialogDelivery.textContent = delivery.textContent;
+    activateProductTab(productDialog.querySelector("#product-tab-review"));
     productDialog.showModal();
   });
 

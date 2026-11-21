@@ -334,6 +334,200 @@
               <button class="shop-link shop-link-primary product-dialog-add" type="button">Add to cart</button>
             </div>
           </section>
+          <section class="product-dialog-tabs" aria-label="More product information">
+            <div class="product-dialog-tab-list" role="tablist" aria-label="Product information">
+              <button
+                class="product-dialog-tab"
+                id="product-tab-description"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="product-panel-description"
+                tabindex="-1"
+              >
+                Description
+              </button>
+              <button
+                class="product-dialog-tab"
+                id="product-tab-specification"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="product-panel-specification"
+                tabindex="-1"
+              >
+                Specification
+              </button>
+              <button
+                class="product-dialog-tab"
+                id="product-tab-review"
+                type="button"
+                role="tab"
+                aria-selected="true"
+                aria-controls="product-panel-review"
+                tabindex="0"
+              >
+                Review
+              </button>
+            </div>
+            <section
+              class="product-dialog-tab-panel"
+              id="product-panel-description"
+              role="tabpanel"
+              aria-labelledby="product-tab-description"
+              tabindex="0"
+              hidden
+            >
+              <p class="product-dialog-tab-description"></p>
+            </section>
+            <section
+              class="product-dialog-tab-panel"
+              id="product-panel-specification"
+              role="tabpanel"
+              aria-labelledby="product-tab-specification"
+              tabindex="0"
+              hidden
+            >
+              <p class="product-dialog-tab-placeholder">Specifications will be added soon.</p>
+            </section>
+            <section
+              class="product-dialog-tab-panel"
+              id="product-panel-review"
+              role="tabpanel"
+              aria-labelledby="product-tab-review"
+              tabindex="0"
+            >
+              <div class="product-dialog-reviews-heading">
+                <div>
+                  <h3>Reviews</h3>
+                  <p class="product-dialog-review-note">Sample reviews for layout preview</p>
+                </div>
+                <label>
+                  <span>Sort by</span>
+                  <select class="product-dialog-review-sort" aria-label="Sort reviews">
+                    <option value="newest">Newest</option>
+                    <option value="oldest">Oldest</option>
+                    <option value="liked">Most liked</option>
+                  </select>
+                </label>
+              </div>
+              <div class="product-dialog-review-list">
+                <article class="product-dialog-review" data-review-age="7" data-review-likes="7">
+                  <div class="product-dialog-review-avatar" aria-hidden="true">MC</div>
+                  <div class="product-dialog-review-body">
+                    <div class="product-dialog-review-heading">
+                      <strong>Maya Carter</strong>
+                      <p>The fit is comfortable and the fabric feels great.</p>
+                      <time>1 week ago</time>
+                    </div>
+                    <div class="product-dialog-review-actions" aria-label="Review activity">
+                      <span>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z" /></svg>
+                        Like
+                      </span>
+                      <span>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 8-4 4 4 4M6 12h10a4 4 0 0 1 4 4v2" /></svg>
+                        Reply
+                      </span>
+                      <span>7 likes</span>
+                    </div>
+                    <details class="product-dialog-replies" data-reply-count="2">
+                      <summary>Show 2 replies</summary>
+                      <div class="product-dialog-reply-list">
+                        <div class="product-dialog-reply">
+                          <div class="product-dialog-review-avatar" aria-hidden="true">AR</div>
+                          <div>
+                            <strong>Amelia Reed</strong>
+                            <p>The material feels lovely too.</p>
+                          </div>
+                        </div>
+                        <div class="product-dialog-reply">
+                          <div class="product-dialog-review-avatar" aria-hidden="true">JL</div>
+                          <div>
+                            <strong>Jordan Lee</strong>
+                            <p>Good to know, thank you for sharing!</p>
+                          </div>
+                        </div>
+                      </div>
+                    </details>
+                  </div>
+                </article>
+                <article class="product-dialog-review" data-review-age="14" data-review-likes="2">
+                  <div class="product-dialog-review-avatar" aria-hidden="true">OB</div>
+                  <div class="product-dialog-review-body">
+                    <div class="product-dialog-review-heading">
+                      <strong>Olivia Brooks</strong>
+                      <p>The quality is excellent and it looks just like the photos.</p>
+                      <time>2 weeks ago</time>
+                    </div>
+                    <div class="product-dialog-review-actions" aria-label="Review activity">
+                      <span>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z" /></svg>
+                        Like
+                      </span>
+                      <span>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 8-4 4 4 4M6 12h10a4 4 0 0 1 4 4v2" /></svg>
+                        Reply
+                      </span>
+                      <span>2 likes</span>
+                    </div>
+                    <details class="product-dialog-replies" data-reply-count="2" open>
+                      <summary>Hide 2 replies</summary>
+                      <div class="product-dialog-reply-list">
+                        <div class="product-dialog-reply">
+                          <div class="product-dialog-review-avatar" aria-hidden="true">NS</div>
+                          <div>
+                            <strong>Noah Smith</strong>
+                            <p>It has been easy to style for different occasions.</p>
+                          </div>
+                        </div>
+                        <div class="product-dialog-reply">
+                          <div class="product-dialog-review-avatar" aria-hidden="true">EW</div>
+                          <div>
+                            <strong>Emma Wilson</strong>
+                            <p>I agree, the quality is really nice.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </details>
+                  </div>
+                </article>
+                <article class="product-dialog-review" data-review-age="14" data-review-likes="1">
+                  <div class="product-dialog-review-avatar" aria-hidden="true">NP</div>
+                  <div class="product-dialog-review-body">
+                    <div class="product-dialog-review-heading">
+                      <strong>Nina Patel</strong>
+                      <p>Easy to style and comfortable enough for all-day wear.</p>
+                      <time>2 weeks ago</time>
+                    </div>
+                    <div class="product-dialog-review-actions" aria-label="Review activity">
+                      <span>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z" /></svg>
+                        Like
+                      </span>
+                      <span>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 8-4 4 4 4M6 12h10a4 4 0 0 1 4 4v2" /></svg>
+                        Reply
+                      </span>
+                      <span>1 like</span>
+                    </div>
+                    <details class="product-dialog-replies" data-reply-count="1">
+                      <summary>Show 1 reply</summary>
+                      <div class="product-dialog-reply-list">
+                        <div class="product-dialog-reply">
+                          <div class="product-dialog-review-avatar" aria-hidden="true">LM</div>
+                          <div>
+                            <strong>Lucas Moore</strong>
+                            <p>That sounds perfect for everyday wear.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </details>
+                  </div>
+                </article>
+              </div>
+            </section>
+          </section>
         </div>
       </dialog>
     </main>
