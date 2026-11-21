@@ -24,7 +24,7 @@
 
   document.querySelectorAll("[data-delivery-date]").forEach((date) => {
     date.dateTime = dateIso;
-    date.textContent = `Delivery by ${formattedDeliveryDate}`;
+    date.textContent = formattedDeliveryDate;
   });
 
   const products = [...grid.querySelectorAll(".collection-product")];
@@ -243,6 +243,7 @@
     productDialogColors.replaceChildren(
       ...Array.from(colorList.children, (color) => color.cloneNode(true)),
     );
+    productDialogDelivery.dateTime = delivery.dateTime;
     productDialogDelivery.textContent = delivery.textContent;
     activateProductTab(productDialog.querySelector("#product-tab-review"));
     productDialog.showModal();
