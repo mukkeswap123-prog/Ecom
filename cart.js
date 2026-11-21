@@ -361,6 +361,7 @@
       const price = Number(product?.dataset.price || prices?.[prices.length - 1]?.replace(/,/g, ""));
       const rating = product?.querySelector(".rating-score")?.textContent.trim() || "4.8";
       const sizes = (product?.dataset.sizes || "S,M,L").split(",");
+      const selectedSize = product?.dataset.selectedSize;
       const colors = [...(product?.querySelectorAll(".product-color-swatch") || [])].map(
         (swatch) => ({
           name: swatch.getAttribute("aria-label") || "Available color",
@@ -382,8 +383,11 @@
         existingItem.rating = rating;
         existingItem.sizes = sizes;
         existingItem.colors = colors.length ? colors : defaultColors;
+        if (sizes.includes(selectedSize)) {
+          existingItem.selectedSize = selectedSize;
+        }
       } else {
-        items.push({
+        const newItem = {
           id,
           name,
           description,
@@ -393,7 +397,11 @@
           rating,
           sizes,
           colors: colors.length ? colors : defaultColors,
-        });
+        };
+        if (sizes.includes(selectedSize)) {
+          newItem.selectedSize = selectedSize;
+        }
+        items.push(newItem);
       }
 
       saveCart();

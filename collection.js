@@ -35,6 +35,7 @@
   const productDialogTitle = productDialog.querySelector("#product-dialog-title");
   const productDialogDescription = productDialog.querySelector(".product-dialog-description");
   const productDialogTabDescription = productDialog.querySelector(".product-dialog-tab-description");
+  const productDialogSpecifications = productDialog.querySelector(".product-dialog-specifications");
   const productDialogPrice = productDialog.querySelector(".product-dialog-price");
   const productDialogRating = productDialog.querySelector(".product-dialog-rating");
   const productDialogSizes = productDialog.querySelector(".product-dialog-sizes");
@@ -135,6 +136,22 @@
     });
   });
 
+  productDialogSizes.addEventListener("click", (event) => {
+    if (!(event.target instanceof Element)) {
+      return;
+    }
+
+    const sizeButton = event.target.closest("button[data-size]");
+    if (!sizeButton) {
+      return;
+    }
+
+    activeProduct.dataset.selectedSize = sizeButton.dataset.size;
+    productDialogSizes.querySelectorAll("button[data-size]").forEach((button) => {
+      button.setAttribute("aria-pressed", String(button === sizeButton));
+    });
+  });
+
   grid.addEventListener("click", (event) => {
     if (!(event.target instanceof Element)) {
       return;
@@ -157,6 +174,18 @@
     if (!image || !title || !description || !price || !rating || !colorList || !delivery) {
       throw new Error("Product details are incomplete.");
     }
+
+    const availableSizes = (product.dataset.sizes || "").split(",").filter(Boolean);
+    const availableColors = Array.from(
+      colorList.querySelectorAll(".product-color-swatch"),
+      (swatch) => swatch.getAttribute("aria-label"),
+    ).filter(Boolean);
+    const specificationRows = [
+      ["Product type", description.textContent.trim()],
+      ["Material", product.dataset.material || "Not specified"],
+      ["Available colors", availableColors.join(", ")],
+      ["Available sizes", availableSizes.join(", ")],
+    ];
 
     activeProduct = product;
     productDialogImage.src = image.src;
@@ -182,13 +211,32 @@
     );
     productDialogTitle.textContent = title.textContent.trim();
     productDialogDescription.textContent = description.textContent;
-    productDialogTabDescription.textContent = description.textContent;
+    productDialogTabDescription.textContent =
+      product.dataset.productDescription || description.textContent;
+    productDialogSpecifications.replaceChildren(
+      ...specificationRows.map(([label, value]) => {
+        const row = document.createElement("div");
+        row.className = "product-dialog-specification-row";
+        const term = document.createElement("dt");
+        term.textContent = label;
+        const detail = document.createElement("dd");
+        detail.textContent = value;
+        row.append(term, detail);
+        return row;
+      }),
+    );
     productDialogPrice.textContent = price.textContent;
     productDialogRating.replaceChildren(rating.cloneNode(true));
     productDialogSizes.replaceChildren(
-      ...(product.dataset.sizes || "").split(",").filter(Boolean).map((size) => {
+      ...availableSizes.map((size) => {
         const item = document.createElement("li");
-        item.textContent = size;
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "product-dialog-size-button";
+        button.dataset.size = size;
+        button.setAttribute("aria-pressed", String(product.dataset.selectedSize === size));
+        button.textContent = size;
+        item.append(button);
         return item;
       }),
     );

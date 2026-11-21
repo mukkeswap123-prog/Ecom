@@ -610,13 +610,31 @@
 
 .product-dialog-sizes li {
   display: grid;
+}
+
+.product-dialog-size-button {
+  display: grid;
   width: 39px;
   height: 39px;
   place-items: center;
   border: 1px solid #e5e1dc;
   border-radius: 0;
+  background: #fff;
   color: #242321;
+  font: inherit;
   font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.product-dialog-size-button[aria-pressed="true"] {
+  border-color: #242321;
+  background: #242321;
+  color: #fff;
+}
+
+.product-dialog-size-button:focus-visible {
+  outline: 2px solid #242321;
+  outline-offset: 3px;
 }
 
 .product-dialog-colors .product-color-swatch {
@@ -705,13 +723,42 @@
   padding: 28px 0 0;
 }
 
-.product-dialog-tab-description,
-.product-dialog-tab-placeholder {
+.product-dialog-tab-description {
   max-width: 900px;
   margin: 0;
   color: #56524e;
   font-size: 0.95rem;
   line-height: 1.6;
+}
+
+.product-dialog-specifications-title {
+  margin: 0 0 16px;
+  color: #242321;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.product-dialog-specifications {
+  margin: 0;
+  border-top: 1px solid #e5e1dc;
+}
+
+.product-dialog-specification-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 20px;
+  padding: 14px 0;
+  border-bottom: 1px solid #e5e1dc;
+  color: #242321;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.product-dialog-specification-row dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+  text-align: right;
 }
 
 .product-dialog-reviews-heading {
@@ -750,6 +797,8 @@
   background: #fff;
   color: #242321;
   font: inherit;
+  text-align: center;
+  text-align-last: center;
   cursor: pointer;
 }
 
