@@ -270,7 +270,7 @@
 .cart-item-service-info {
   display: grid;
   gap: 10px;
-  color: #56524e;
+  color: #000000;
   font-size: 0.9rem;
   line-height: 1.4;
 }
@@ -296,12 +296,12 @@
 
 .cart-item-service-info time,
 .cart-item-service-info strong {
-  color: #242321;
+  color: #000000;
   font-weight: 700;
 }
 
 .cart-item-stock {
-  color: #56524e;
+  color: #9c7044;
   font-size: 0.82rem;
 }
 
@@ -322,7 +322,7 @@
   height: 32px;
   border: 0;
   background: transparent;
-  color: #242321;
+  color: #000000;
   cursor: pointer;
 }
 
