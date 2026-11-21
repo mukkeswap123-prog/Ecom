@@ -680,6 +680,14 @@
   cursor: pointer;
 }
 
+.product-dialog-add,
+.product-dialog-add:hover {
+  border-color: #000;
+  background: #000;
+  color: #fff;
+  transition: none;
+}
+
 .product-dialog-tabs {
   max-width: 1200px;
   margin: 34px auto 0;

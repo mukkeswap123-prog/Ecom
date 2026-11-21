@@ -48,7 +48,7 @@
 .hero-description {
   max-width: 500px;
   margin: 22px 0 31px;
-  color: rgba(252, 252, 252, 0.9);
+  color: #f7f5f0cc;
   font-size: 1rem;
   line-height: 1.7;
   word-spacing: 0.06em;
@@ -177,7 +177,7 @@
 .seller-filter {
   min-height: 33px;
   padding: 0 16px;
-  border: 1px solid rgba(247, 245, 240, 0.75);
+  border: 1px solid #f7f5f0cc;
   border-radius: 999px;
   background: transparent;
   color: #f7f5f0;
@@ -352,7 +352,7 @@
   align-items: center;
   gap: 8px;
   padding: 5px;
-  border: 1px solid rgba(247, 245, 240, 0.8);
+  border: 1px solid #f7f5f0cc;
   border-radius: 999px;
 }
 
