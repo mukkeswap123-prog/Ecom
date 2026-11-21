@@ -38,9 +38,27 @@
   const productDialogRating = productDialog.querySelector(".product-dialog-rating");
   const productDialogSizes = productDialog.querySelector(".product-dialog-sizes");
   const productDialogColors = productDialog.querySelector(".product-dialog-colors");
+  const productDialogThumbnails = productDialog.querySelector(".product-dialog-thumbnails");
   const productDialogDelivery = productDialog.querySelector(".product-dialog-delivery");
+  const productImagePositions = ["50% 18%", "50% 40%", "50% 62%", "50% 84%"];
   let activeProduct = null;
   let activeCategory = "all";
+
+  productDialogThumbnails.addEventListener("click", (event) => {
+    if (!(event.target instanceof Element)) {
+      return;
+    }
+
+    const thumbnail = event.target.closest("button[data-image-position]");
+    if (!thumbnail) {
+      return;
+    }
+
+    productDialogImage.style.objectPosition = thumbnail.dataset.imagePosition;
+    productDialogThumbnails.querySelectorAll("button[data-image-position]").forEach((button) => {
+      button.setAttribute("aria-pressed", String(button === thumbnail));
+    });
+  });
 
   grid.addEventListener("click", (event) => {
     if (!(event.target instanceof Element)) {
@@ -68,6 +86,25 @@
     activeProduct = product;
     productDialogImage.src = image.src;
     productDialogImage.alt = image.alt;
+    productDialogImage.style.objectPosition = productImagePositions[0];
+    productDialogThumbnails.replaceChildren(
+      ...productImagePositions.map((position, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "product-dialog-thumbnail";
+        button.dataset.imagePosition = position;
+        button.setAttribute("aria-label", `View product image ${index + 1}`);
+        button.setAttribute("aria-pressed", String(index === 0));
+
+        const thumbnailImage = document.createElement("img");
+        thumbnailImage.src = image.src;
+        thumbnailImage.alt = "";
+        thumbnailImage.loading = "lazy";
+        thumbnailImage.style.objectPosition = position;
+        button.append(thumbnailImage);
+        return button;
+      }),
+    );
     productDialogTitle.textContent = title.textContent.trim();
     productDialogDescription.textContent = description.textContent;
     productDialogPrice.textContent = price.textContent;
