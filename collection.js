@@ -19,6 +19,7 @@
   const formattedDeliveryDate = new Intl.DateTimeFormat("en-IN", {
     day: "numeric",
     month: "short",
+    weekday: "long",
   }).format(deliveryDate);
 
   document.querySelectorAll("[data-delivery-date]").forEach((date) => {

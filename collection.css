@@ -445,8 +445,8 @@
   display: grid;
   max-width: 1200px;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  align-items: start;
-  gap: 28px;
+  align-items: stretch;
+  gap: clamp(20px, 3vw, 36px);
   margin: 0 auto;
   padding: clamp(18px, 3vw, 28px);
   border: 1px solid #e5e1dc;
@@ -454,14 +454,17 @@
 }
 
 .product-dialog-image-wrap {
+  position: relative;
   min-height: 320px;
-  aspect-ratio: 0.86;
+  aspect-ratio: auto;
   overflow: hidden;
   border-radius: 5px;
   background: #f4f1ed;
 }
 
 .product-dialog-image {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
@@ -473,6 +476,12 @@
   align-content: start;
   gap: 13px;
   padding: 4px 0;
+}
+
+.product-dialog-copy h3 {
+  margin: 0;
+  font-size: clamp(1.15rem, 1.7vw, 1.45rem);
+  font-weight: 600;
 }
 
 .product-dialog-close {
@@ -498,8 +507,7 @@
 
 .product-dialog-eyebrow,
 .product-dialog-description,
-.product-dialog-price,
-.product-dialog-delivery {
+.product-dialog-price {
   margin: 0;
 }
 
@@ -538,8 +546,8 @@
 
 .product-dialog-option h3 {
   margin: 0 0 10px;
-  color: #56524e;
-  font-size: 0.78rem;
+  color: #000;
+  font-size: 1rem;
   font-weight: 600;
 }
 
@@ -550,30 +558,61 @@
   align-items: center;
   gap: 8px;
   margin: 0;
-  padding: 4px 0;
+  padding: 0;
   list-style: none;
 }
 
 .product-dialog-option:first-child .product-dialog-sizes {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 6px;
+  align-items: flex-start;
 }
 
 .product-dialog-sizes li {
   display: grid;
-  min-width: 0;
-  height: 34px;
+  width: 39px;
+  height: 39px;
   place-items: center;
   border: 1px solid #e5e1dc;
-  border-radius: 5px;
+  border-radius: 0;
   color: #242321;
   font-size: 0.78rem;
 }
 
-.product-dialog-delivery {
+.product-dialog-colors .product-color-swatch {
+  width: 30px;
+  height: 30px;
+}
+
+.product-dialog-service-info {
+  display: grid;
+  gap: 10px;
   color: #56524e;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.product-dialog-service-info p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+
+.product-dialog-service-info strong,
+.product-dialog-delivery {
+  color: #242321;
+  font-weight: 700;
+}
+
+.product-dialog-service-icon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
 }
 
 .product-dialog-add {
@@ -625,7 +664,7 @@
 
   .product-dialog-image-wrap {
     min-height: 0;
-    aspect-ratio: 1.1;
+    aspect-ratio: 1.25;
   }
 
   .product-dialog-copy {
@@ -633,7 +672,12 @@
     padding: 0;
   }
 
+  .product-dialog-copy h3 {
+    font-size: 0.9rem;
+  }
+
   .product-dialog-options {
+    grid-template-columns: minmax(0, 1fr);
     gap: 12px;
     padding: 14px 0;
   }
