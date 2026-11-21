@@ -70,22 +70,24 @@
 
   const updateCartCount = () => {
     const count = items.reduce((total, item) => total + item.quantity, 0);
-    const cartLink = document.querySelector('.primary-nav a[href="cart.html"]');
+    const cartLinks = document.querySelectorAll('.primary-nav a[href="cart.html"]');
 
-    if (!cartLink) {
+    if (cartLinks.length === 0) {
       return;
     }
 
-    let badge = cartLink.querySelector(".cart-count");
-    if (!badge) {
-      badge = document.createElement("span");
-      badge.className = "cart-count";
-      badge.setAttribute("aria-hidden", "true");
-      cartLink.append(badge);
-    }
+    cartLinks.forEach((cartLink) => {
+      let badge = cartLink.querySelector(".cart-count");
+      if (!badge) {
+        badge = document.createElement("span");
+        badge.className = "cart-count";
+        badge.setAttribute("aria-hidden", "true");
+        cartLink.append(badge);
+      }
 
-    badge.textContent = String(count);
-    cartLink.setAttribute("aria-label", `Cart, ${count} ${count === 1 ? "item" : "items"}`);
+      badge.textContent = String(count);
+      cartLink.setAttribute("aria-label", `Cart, ${count} ${count === 1 ? "item" : "items"}`);
+    });
   };
 
   const makeQuantityButton = (label, action, id, text) => {
