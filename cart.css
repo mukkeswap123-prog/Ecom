@@ -464,6 +464,7 @@
   width: 100%;
   min-height: 48px;
   cursor: not-allowed;
+  border-radius: 50px;
 }
 
 .cart-checkout-note {
