@@ -332,9 +332,11 @@
 }
 
 .cart-item-quantity {
-  min-width: 28px;
+  min-width: 40px;
   text-align: center;
   font-size: 0.84rem;
+  color: #9c7044;
+  font-weight: 900;
 }
 
 .cart-item-actions {
