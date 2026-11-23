@@ -14,6 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="preload" as="image" href="xyz-background.jpg" fetchpriority="high" />
     <link rel="stylesheet" href="base.css" />
     <link rel="stylesheet" href="home.css" />
     <script src="cart.js" defer></script>
@@ -193,7 +194,15 @@
       </section>
 
       <section class="ad-section" aria-label="Advertisement">
-        <div class="ad-banner" role="img" aria-labelledby="ad-title">
+        <div class="ad-banner">
+          <img
+            class="ad-banner-image"
+            src="bestsellers-ad-background.jpg"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            decoding="async"
+          />
           <h2 id="ad-title">
             <span>Last few</span>
             <span>Bestsellers</span>
