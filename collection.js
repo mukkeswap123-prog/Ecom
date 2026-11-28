@@ -4,8 +4,17 @@
   const sortSelect = document.querySelector(".collection-sort select");
   const filters = document.querySelectorAll(".collection-filter input[type='checkbox']");
   const priceRange = document.querySelector("#collection-price");
+  const collectionContent = document.querySelector(".collection-content");
+  const filterToggle = document.querySelector(".collection-filter-toggle");
 
-  if (!grid || tabs.length === 0 || !sortSelect || !priceRange) {
+  if (
+    !grid ||
+    tabs.length === 0 ||
+    !sortSelect ||
+    !priceRange ||
+    !collectionContent ||
+    !filterToggle
+  ) {
     return;
   }
 
@@ -334,6 +343,12 @@
       priceOutput.value = `₹${Number(priceRange.value).toLocaleString("en-IN")}`;
     }
   };
+
+  filterToggle.addEventListener("click", () => {
+    const isOpen = collectionContent.classList.toggle("filters-open");
+    filterToggle.setAttribute("aria-expanded", String(isOpen));
+    filterToggle.setAttribute("aria-label", `${isOpen ? "Hide" : "Show"} product filters`);
+  });
 
   tabs.forEach((tab) => {
     tab.addEventListener("click", () => {

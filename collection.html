@@ -50,7 +50,7 @@
       </section>
 
       <section class="collection-content" aria-label="Browse collection">
-        <aside class="collection-sidebar">
+        <aside class="collection-sidebar" id="collection-filters">
           <div class="collection-filter" aria-label="Product filters">
             <h2>Filter</h2>
 
@@ -97,6 +97,18 @@
 
         <div class="collection-results">
           <div class="collection-toolbar">
+            <button
+              class="collection-filter-toggle"
+              type="button"
+              aria-label="Show product filters"
+              aria-controls="collection-filters"
+              aria-expanded="false"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 5h16l-6.5 7.5v5l-3 1v-6L4 5z"></path>
+              </svg>
+              <span>Filters</span>
+            </button>
             <div class="collection-tabs" role="group" aria-label="Filter products by category">
               <button class="collection-tab is-active" type="button" data-category="all" aria-pressed="true">All</button>
               <button class="collection-tab" type="button" data-category="men" aria-pressed="false">Men</button>
