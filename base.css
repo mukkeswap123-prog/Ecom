@@ -373,7 +373,8 @@ input {
     grid-column: 2;
     grid-row: 1;
     width: clamp(100px, 34vw, 126px);
-    padding: clamp(4px, 1vw, 6px) 9px;
+    height: clamp(24.5px, 7.56vw, 29.5px);
+    padding: 0 9px;
   }
 
   .shop-link {
