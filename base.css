@@ -333,22 +333,27 @@ input {
 
 @media (max-width: 620px) {
   :root {
-    --page-gutter: 23px;
+    --page-gutter: clamp(16px, 6vw, 23px);
   }
 
   .site-header {
     grid-template-columns: 1fr auto;
     min-height: 104px;
+    column-gap: 12px;
     padding-top: 2px;
   }
 
   .brand-area {
     grid-column: 1;
     grid-row: 1;
+    min-width: 0;
   }
 
   .wordmark {
-    font-size: 1.35rem;
+    gap: 0.2em;
+    font-size: clamp(0.9rem, 5.5vw, 1.35rem);
+    letter-spacing: 0.08em;
+    white-space: nowrap;
   }
 
   .primary-nav {
@@ -357,17 +362,18 @@ input {
     justify-self: stretch;
     justify-content: space-between;
     gap: 10px;
-    padding-bottom: 8px;
+    padding: 0 8px 8px;
   }
 
   .primary-nav a {
-    font-size: 0.71rem;
+    font-size: clamp(0.64rem, 3vw, 0.71rem);
   }
 
   .search {
     grid-column: 2;
     grid-row: 1;
-    width: 126px;
+    width: clamp(100px, 34vw, 126px);
+    padding: 8px 10px;
   }
 
   .shop-link {
